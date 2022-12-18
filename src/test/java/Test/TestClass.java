@@ -1,3 +1,6 @@
+package Test;
+
+import Data.DataGenerator;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
