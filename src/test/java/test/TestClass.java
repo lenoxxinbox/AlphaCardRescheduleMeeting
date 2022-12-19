@@ -22,25 +22,25 @@ public class TestClass {
         open("http://localhost:9999");
     }
 
-        @Test
-        @DisplayName("Should successful plan meeting")
-        void shouldSuccessfulPlanMeeting() {
-            var validUser = DataGenerator.Registration.generateUser("ru");
-            var daysToAddForFirstMeeting = 4;
-            var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
-            var daysToAddForSecondMeeting = 7;
-            var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-            $("[data-test-id=city] input").setValue(validUser.getCity());
-            $("[data-test-id=date] input").sendKeys(Keys.CONTROL + "A");
-            $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-            $("[data-test-id=date] input").setValue(firstMeetingDate);
-            $("[data-test-id=name] input").setValue(validUser.getName());
-            $("[data-test-id=phone] input").setValue(validUser.getPhone());
-            $("[data-test-id=agreement]").click();
-            $(By.className("button")).click();
+    @Test
+    @DisplayName("Should successful plan meeting")
+    void shouldSuccessfulPlanMeeting() {
+        var validUser = DataGenerator.Registration.generateUser("ru");
+        var daysToAddForFirstMeeting = 4;
+        var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
+        var daysToAddForSecondMeeting = 7;
+        var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
+        $("[data-test-id=city] input").setValue(validUser.getCity());
+        $("[data-test-id=date] input").sendKeys(Keys.CONTROL + "A");
+        $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
+        $("[data-test-id=date] input").setValue(firstMeetingDate);
+        $("[data-test-id=name] input").setValue(validUser.getName());
+        $("[data-test-id=phone] input").setValue(validUser.getPhone());
+        $("[data-test-id=agreement]").click();
+        $(By.className("button")).click();
 
-            $("[data-test-id=success-notification]").shouldHave(text("Встреча успешно запланирована на " + firstMeetingDate), Duration.ofSeconds(15)).shouldBe(Condition.visible);
-        }
+        $("[data-test-id=success-notification]").shouldHave(text("Встреча успешно запланирована на " + firstMeetingDate), Duration.ofSeconds(15)).shouldBe(Condition.visible);
+    }
 
     @Test
     @DisplayName("Should successful plan and notification about reschedule meeting")
