@@ -1,4 +1,5 @@
-package Data;
+package data;
+
 
 import com.github.javafaker.Faker;
 import lombok.Value;
@@ -19,7 +20,7 @@ public class DataGenerator {
     }
 
     public static String generateCity() {
-        var cities = new String[] {"Волгоград", "Москва", "Санкт-Петербург", "Рязань", "Калуга", "Новосибирск", "Нижний Новгород", "Астрахань", "Самара", "Воронеж"};
+        var cities = new String[]{"Волгоград", "Москва", "Санкт-Петербург", "Рязань", "Калуга", "Новосибирск", "Нижний Новгород", "Астрахань", "Самара", "Воронеж"};
         return cities[new Random().nextInt(cities.length)];
     }
 
