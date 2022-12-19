@@ -1,4 +1,4 @@
-package Test;
+package test;
 
 import Data.DataGenerator;
 import com.codeborne.selenide.Condition;
@@ -100,3 +100,4 @@ public class TestClass {
         $("[data-test-id=success-notification]").shouldHave(text("Встреча успешно запланирована на " + secondMeetingDate), Duration.ofSeconds(15)).shouldBe(Condition.visible);
     }
 }
+
