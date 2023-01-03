@@ -1,11 +1,14 @@
 package test;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
 import data.DataGenerator;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
@@ -15,6 +18,15 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 public class TestClass {
+
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
     @BeforeEach
     void setup() {
         Configuration.holdBrowserOpen = true;
@@ -23,7 +35,9 @@ public class TestClass {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Should successful plan and notification about reschedule meeting")
+    @Description("Successfully rescheduled meeting")
     void shouldSuccessfulPlanAndNotificationAboutRescheduleMeeting() {
         var validUser = DataGenerator.Registration.generateUser("ru");
         var daysToAddForFirstMeeting = 4;
